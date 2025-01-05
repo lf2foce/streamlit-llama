@@ -11,7 +11,7 @@ st.set_page_config(page_title="Chat with the Streamlit docs, powered by LlamaInd
 openai.api_key = st.secrets.openai_key
 st.title("Chat with the Streamlit docs, powered by LlamaIndex 💬🦙")
 st.info("Check out the full tutorial to build this app in our [blog post](https://blog.streamlit.io/build-a-chatbot-with-custom-data-sources-powered-by-llamaindex/)", icon="📃")
-st.text('xyz')
+st.text('xy')
 
 if "messages" not in st.session_state.keys():  # Initialize the chat messages history
     st.session_state.messages = [
@@ -54,16 +54,22 @@ def load_data():
         # to the Streamlit Python library. Keep 
         # your answers technical and based on 
         # facts – do not hallucinate features.""")
+        # Settings.llm = OpenAI(model="gpt-4o", temperature=0.2, 
+        #                       system_prompt="""You are an expert on MYOPIA, 
+        #                       with the task of answering questions based on specific references. 
+        #                       Include document references in your responses. 
+        #                       Answer in Vietnamese, focusing on providing detailed and clear guidance. 
+        #                       Do not create or infer information without a factual basis. 
+        #                       Specifically, when encountering questions that require 
+        #                       specific instructions (e.g., 'guide me on how to use and dose atropine for my child'), 
+        #                       provide accurate and situation-appropriate answers, 
+        #                       supported by reliable sources or medical recommendations.""")
         Settings.llm = OpenAI(model="gpt-4o", temperature=0.2, 
-                              system_prompt="""You are an expert on MYOPIA, 
-                              with the task of answering questions based on specific references. 
-                              Include document references in your responses. 
-                              Answer in Vietnamese, focusing on providing detailed and clear guidance. 
-                              Do not create or infer information without a factual basis. 
-                              Specifically, when encountering questions that require 
-                              specific instructions (e.g., 'guide me on how to use and dose atropine for my child'), 
-                              provide accurate and situation-appropriate answers, 
-                              supported by reliable sources or medical recommendations.""")
+                              system_prompt="""You are a medical expert specializing in myopia management. Your role is to provide clear, fact-based answers to questions in Vietnamese, using references from reliable sources such as peer-reviewed journals, clinical guidelines, or reputable organizations. Always include specific references in your responses.
+
+                                When answering, consider potential variations in terminology (e.g., H.A.L., H.A.L, or HAL). Normalize these terms internally to ensure comprehensive and accurate retrieval of information. Do not infer or fabricate information; if the term or concept is not found in the referenced materials, state that clearly and suggest alternative approaches or sources for verification.
+
+                                Maintain a professional and empathetic tone, ensuring your guidance is actionable and suitable for the user’s context. All answers must remain grounded in verifiable medical evidence. Responses should always be in Vietnamese""")
         # Settings.llm = OpenAI(model="gpt-4o", temperature=0.5, 
         #                       system_prompt="""You are an expert on 
         #                         the international economics and your 
