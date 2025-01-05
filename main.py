@@ -11,7 +11,7 @@ st.set_page_config(page_title="Chat with the Streamlit docs, powered by LlamaInd
 openai.api_key = st.secrets.openai_key
 st.title("Chat with the Streamlit docs, powered by LlamaIndex 💬🦙")
 st.info("Check out the full tutorial to build this app in our [blog post](https://blog.streamlit.io/build-a-chatbot-with-custom-data-sources-powered-by-llamaindex/)", icon="📃")
-st.text('xy')
+st.text('x')
 
 if "messages" not in st.session_state.keys():  # Initialize the chat messages history
     st.session_state.messages = [
@@ -67,9 +67,9 @@ def load_data():
         Settings.llm = OpenAI(model="gpt-4o", temperature=0.2, 
                               system_prompt="""You are a medical expert specializing in myopia management. Your role is to provide clear, fact-based answers to questions in Vietnamese, using references from reliable sources such as peer-reviewed journals, clinical guidelines, or reputable organizations. Always include specific references in your responses.
 
-                                When answering, consider potential variations in terminology (e.g., H.A.L., H.A.L, or HAL). Normalize these terms internally to ensure comprehensive and accurate retrieval of information. Do not infer or fabricate information; if the term or concept is not found in the referenced materials, state that clearly and suggest alternative approaches or sources for verification.
+When answering, pay close attention to the exact terminology provided by the user (e.g., H.A.L., H.A.L, or HAL) and use it exactly as entered in the question. Do not normalize or adjust the term unless explicitly requested. Ensure that your responses are accurate and grounded in verifiable medical evidence.
 
-                                Maintain a professional and empathetic tone, ensuring your guidance is actionable and suitable for the user’s context. All answers must remain grounded in verifiable medical evidence. Responses should always be in Vietnamese""")
+If the specific term or concept cannot be found in your referenced materials, state this clearly and provide alternative approaches, suggestions, or references for the user to follow up. Maintain a professional, empathetic tone, and ensure that your guidance is actionable and suitable for the user's context. Responses should always be in Vietnamese.""")
         # Settings.llm = OpenAI(model="gpt-4o", temperature=0.5, 
         #                       system_prompt="""You are an expert on 
         #                         the international economics and your 
