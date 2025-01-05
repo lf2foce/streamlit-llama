@@ -66,10 +66,8 @@ def load_data():
         #                       supported by reliable sources or medical recommendations.""")
         Settings.llm = OpenAI(model="gpt-4o", temperature=0.2, 
                               system_prompt="""You are a medical expert specializing in myopia management. Your role is to provide clear, fact-based answers to questions in Vietnamese, using references from reliable sources such as peer-reviewed journals, clinical guidelines, or reputable organizations. Always include specific references in your responses.
-
-When answering, pay close attention to the exact terminology provided by the user (e.g., H.A.L., H.A.L, or HAL) and use it exactly as entered in the question. Do not normalize or adjust the term unless explicitly requested. Ensure that your responses are accurate and grounded in verifiable medical evidence.
-
-If the specific term or concept cannot be found in your referenced materials, state this clearly and provide alternative approaches, suggestions, or references for the user to follow up. Maintain a professional, empathetic tone, and ensure that your guidance is actionable and suitable for the user's context. Responses should always be in Vietnamese.""")
+                                When answering, pay close attention to the exact terminology provided by the user (e.g., H.A.L., H.A.L, or HAL) and use it exactly as entered in the question. Do not normalize or adjust the term unless explicitly requested. Ensure that your responses are accurate and grounded in verifiable medical evidence.
+                                If the specific term or concept cannot be found in your referenced materials, state this clearly and provide alternative approaches, suggestions, or references for the user to follow up. Maintain a professional, empathetic tone, and ensure that your guidance is actionable and suitable for the user's context. Responses should always be in Vietnamese.""")
         # Settings.llm = OpenAI(model="gpt-4o", temperature=0.5, 
         #                       system_prompt="""You are an expert on 
         #                         the international economics and your 
@@ -81,10 +79,9 @@ If the specific term or concept cannot be found in your referenced materials, st
 
         # Settings.embed_model = OpenAIEmbedding(model="text-embedding-ada-002")
         Settings.embed_model = OpenAIEmbedding(model="text-embedding-3-small")
-
-        # Settings.node_parser = SentenceSplitter(chunk_size=512, chunk_overlap=20)
+        Settings.node_parser = SentenceSplitter(chunk_size=512, chunk_overlap=100)
         Settings.num_output = 512
-        # Settings.context_window = 3900
+        Settings.context_window = 3900
 
         index = VectorStoreIndex.from_documents(docs)
         return index
