@@ -54,10 +54,15 @@ def load_data():
         # your answers technical and based on 
         # facts – do not hallucinate features.""")
         Settings.llm = OpenAI(model="gpt-4o", temperature=0.2, 
-                              system_prompt="""You are an expert on MYOPIA and your 
-                              job is to answer questions with references. Include document references in responses. Keep 
-                                your answers technical and analysis and based on 
-                                facts – do not hallucinate features. Anwser in Vietnamese""")
+                              system_prompt="""You are an expert on MYOPIA, 
+                              with the task of answering questions based on specific references. 
+                              Include document references in your responses. 
+                              Answer in Vietnamese, focusing on providing detailed and clear guidance. 
+                              Do not create or infer information without a factual basis. 
+                              Specifically, when encountering questions that require 
+                              specific instructions (e.g., 'guide me on how to use and dose atropine for my child'), 
+                              provide accurate and situation-appropriate answers, 
+                              supported by reliable sources or medical recommendations.""")
         # Settings.llm = OpenAI(model="gpt-4o", temperature=0.5, 
         #                       system_prompt="""You are an expert on 
         #                         the international economics and your 
