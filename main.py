@@ -72,7 +72,9 @@ def load_data():
         #                         your answers technical and based on 
         #                         facts – do not hallucinate features. Anwser in Vietnamese""")
 
-        Settings.embed_model = OpenAIEmbedding(model="text-embedding-ada-002")
+        # Settings.embed_model = OpenAIEmbedding(model="text-embedding-ada-002")
+        Settings.embed_model = OpenAIEmbedding(model="text-embedding-3-small")
+
         # Settings.node_parser = SentenceSplitter(chunk_size=512, chunk_overlap=20)
         Settings.num_output = 512
         # Settings.context_window = 3900
